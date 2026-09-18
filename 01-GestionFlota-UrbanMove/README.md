@@ -56,9 +56,17 @@ Este mini-proyecto me sirvió para poner en práctica conceptos fundamentales de
 
                      --- EXCEPCIONES Y SERVICIOS ---
 
-    +--------------------------------+     +--------------------------------+
+    +--------------------------------+     +--------------------------------+      
     |  BateriaInsuficienteException  |     |  VehiculoNoDisponibleException |
     +--------------------------------+     +--------------------------------+
     | + NivelActual: int             |     | (Hereda de Exception)          |
     | + NivelMinimoRequerido: int    |     | Lanza error si Estado != Dispo |
     +--------------------------------+     +--------------------------------+
+    +-------------------------------------------------+
+    |                ProcesarAlquiler                 |
+    +-------------------------------------------------+
+    | - _disponible: IDisponible                      |
+    +-------------------------------------------------+
+    | + ProcesarAlquiler(disponible: IDisponible)     |
+    | + IniciarViaje(minutos: int): double            |
+    +-------------------------------------------------+
