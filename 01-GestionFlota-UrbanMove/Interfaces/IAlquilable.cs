@@ -9,5 +9,5 @@ public interface IAlquilable
     /// </summary>
     /// <param name="minutos"></param>
     /// <returns></returns>
-    double CalcularCosto(int minutos);
+    decimal CalcularCosto(int minutos);
 }

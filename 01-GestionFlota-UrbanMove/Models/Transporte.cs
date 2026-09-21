@@ -1,4 +1,3 @@
-using System;
 using _01_GestionFlota_UrbanMove.Common;
 using _01_GestionFlota_UrbanMove.Interfaces;
 
@@ -73,6 +72,6 @@ protected Transporte(string id,string marca,string modelo,EstadoVehiculo estado)
     /// <returns></returns>
     public override string ToString()
     {
-        return $"[{Id}] {Marca} {Modelo} - Estado: {Estado}";
+        return $"[{Id}] {Marca} {Modelo} | Estado: {Estado}";
     }
 }

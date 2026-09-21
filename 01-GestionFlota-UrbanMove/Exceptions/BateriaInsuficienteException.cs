@@ -1,6 +1,6 @@
 namespace _01_GestionFlota_UrbanMove.Exceptions;
 /// <summary>
-/// Exception de negocio cuando la bateria no cumple con el porcentaje minimo requerido.
+/// Excepcion de negocio cuando la bateria no cumple con el porcentaje minimo requerido.
 /// </summary>
 public class BateriaInsuficienteException : Exception
 {
