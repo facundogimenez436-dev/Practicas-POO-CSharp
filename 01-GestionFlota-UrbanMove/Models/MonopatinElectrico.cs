@@ -43,6 +43,6 @@ public class MonopatinElectrico : Transporte,IAlquilable,IRecargable
     }
     public override string ToString()
     {
-        return $"[{base.ToString}] |Bateria:{NivelBateria}%| Costo Base:${CostoBase} | Costo/minutos:${CostoPorMinuto}";
+        return $"{base.ToString()} |Bateria:{NivelBateria}%| Costo Base:${CostoBase} | Costo/minutos:${CostoPorMinuto}";
     }
 }  

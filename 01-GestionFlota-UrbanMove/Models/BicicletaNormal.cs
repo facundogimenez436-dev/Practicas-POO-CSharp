@@ -18,6 +18,6 @@ public class BicicletaNormal : Transporte, IAlquilable
     }
     public override string ToString()
     {
-        return $"[{base.ToString}]| Costo/minutos:${CostoPorMinuto}";
+        return $"{base.ToString()}| Costo/minutos:${CostoPorMinuto}";
     }
 }

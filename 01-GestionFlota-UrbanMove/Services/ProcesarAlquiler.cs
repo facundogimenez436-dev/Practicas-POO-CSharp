@@ -17,6 +17,11 @@ public class ProcesarAlquiler
         {
             throw new InvalidOperationException($"El Transporte: {vehiculo.Id} no es alquilable.");
         }
+        if (vehiculo is IRecargable recargable && recargable.NivelBateria <= 15)
+        {
+            throw new BateriaInsuficienteException($"El vehículo {vehiculo.Id} no tiene suficiente batería ({recargable.NivelBateria}%)."
+            );
+        }
         if (!vehiculo.EsAptoParaUso())
         {
             throw new VehiculoNoAptoException($"El vehiculo: {vehiculo.Id} no esta apto para usar");
