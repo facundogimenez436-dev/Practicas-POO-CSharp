@@ -11,7 +11,7 @@ public class CamionLogistica : Transporte
     /// Lista para almacenar los vehiculos que se cargan dentro del camion.
     /// </summary>
     public List<Transporte> CargaCamion { get; private set; } = new();
-    public CamionLogistica(string id, string marca, string modelo, EstadoVehiculo estado) : base(id, marca, modelo, estado){}
+    public CamionLogistica(string id, string marca, string modelo) : base(id, marca, modelo){}
 
     public override bool EsAptoParaUso() => Estado == EstadoVehiculo.Disponible;
 
@@ -41,6 +41,6 @@ public class CamionLogistica : Transporte
     }
     public override string ToString()
     {
-        return $"{base.ToString()}";
+        return $"{base.ToString()}\nCapacidad Maxima:{CapacidadMaxima}\nCarga actual:{CargaCamion}";
     }
 }

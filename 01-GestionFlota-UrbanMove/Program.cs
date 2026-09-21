@@ -26,7 +26,7 @@ public class Program
             // Título principal con estilo
             AnsiConsole.Write(
                 new FigletText("UrbanMove")
-                    .Color(Color.Green));
+                    .Color(Color.Blue));
 
             AnsiConsole.Write(new Rule("[yellow]Sistema de Gestión de Flota & Logística[/]"));
             AnsiConsole.WriteLine();

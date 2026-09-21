@@ -23,9 +23,9 @@ public class MonopatinElectrico : Transporte,IAlquilable,IRecargable
     public decimal CostoBase { get; } = 50.0m;
     public decimal CostoPorMinuto { get; } = 15.0m;
 
-    public MonopatinElectrico(int nivelBateria, string id, string marca, string modelo, EstadoVehiculo estado) : base(id,marca,modelo,estado)
+    public MonopatinElectrico(string id, string marca, string modelo) : base(id,marca,modelo)
     {
-        this.NivelBateria = nivelBateria;
+        this.NivelBateria = 100;
     }
     public override bool EsAptoParaUso()=> Estado == EstadoVehiculo.Disponible && NivelBateria > 15;
     public decimal CalcularCosto(int minutos)
@@ -43,6 +43,6 @@ public class MonopatinElectrico : Transporte,IAlquilable,IRecargable
     }
     public override string ToString()
     {
-        return $"{base.ToString()} |Bateria:{NivelBateria}%| Costo Base:${CostoBase} | Costo/minutos:${CostoPorMinuto}";
+        return $"{base.ToString()}\nBateria:{NivelBateria}%\nCosto Base:${CostoBase}\nCosto/minutos:${CostoPorMinuto}";
     }
 }  

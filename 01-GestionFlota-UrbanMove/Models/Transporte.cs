@@ -47,7 +47,7 @@ public abstract class Transporte : IDisponible, IComparable<Transporte>
         }
     }
     public EstadoVehiculo Estado { get; set; }
-protected Transporte(string id,string marca,string modelo,EstadoVehiculo estado)
+protected Transporte(string id,string marca,string modelo,EstadoVehiculo estado = EstadoVehiculo.Disponible)
     {
         this.Id = id;
         this.Marca = marca;
@@ -72,6 +72,6 @@ protected Transporte(string id,string marca,string modelo,EstadoVehiculo estado)
     /// <returns></returns>
     public override string ToString()
     {
-        return $"[{Id}] {Marca} {Modelo} | Estado: {Estado}";
+        return $"ID: {Id}\nMarca: {Marca}\nModelo: {Modelo}\nEstado: {Estado}";
     }
 }

@@ -9,7 +9,7 @@ public class BicicletaNormal : Transporte, IAlquilable
 {
     public decimal CostoPorMinuto { get; } = 12.0m;
 
-    public BicicletaNormal(string id, string marca, string modelo, EstadoVehiculo estado) : base(id, marca, modelo, estado){}
+    public BicicletaNormal(string id, string marca, string modelo) : base(id, marca, modelo){}
     public override bool EsAptoParaUso() => Estado == EstadoVehiculo.Disponible;
     
     public decimal CalcularCosto(int minutos)
@@ -18,6 +18,6 @@ public class BicicletaNormal : Transporte, IAlquilable
     }
     public override string ToString()
     {
-        return $"{base.ToString()}| Costo/minutos:${CostoPorMinuto}";
+        return $"{base.ToString()}\nCosto/minutos:${CostoPorMinuto}";
     }
 }
