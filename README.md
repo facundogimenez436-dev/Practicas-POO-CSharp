@@ -16,5 +16,4 @@ Este repositorio reúne mi proceso de aprendizaje y consolidación de la **Progr
 ## 🛠️ Tecnologías
 
 - **Lenguaje:** C# / .NET SDK
-- **Entorno:** Visual Studio Code en Linux Mint
 - **Control de Versiones:** Git & GitHub
