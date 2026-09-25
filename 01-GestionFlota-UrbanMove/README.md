@@ -1,72 +1,40 @@
-# 01 - Sistema de Gestión de Flota (UrbanMove)
+# UrbanMove - Sistema de Gestión de Flota y Logística
 
-## 🎯 Objetivo
-Desarrollar un sistema de consola para la gestión de vehículos de movilidad urbana de corta distancia (Monopatines y Bicis Eléctricas), aplicando principios de Diseño Orientado a Objetos y una arquitectura limpia en C#.
+Este proyecto es una aplicación de consola desarrollada en **C# (.NET 10)** creada con el objetivo principal de consolidar y poner en práctica los fundamentos de la **Programación Orientada a Objetos (POO)**. 
 
-## 🚀 Conceptos Clave Aplicados
-* **Herencia y Polimorfismo:** Clase base abstracta `Vehiculo` de la que heredan `MonopatinElectrico` y `Bicicleta`, permitiendo el cálculo dinámico de tarifas según el tipo de transporte.
-* **Interfaces:** `IRecargable` para la gestión de carga de batería e `IDisponible` para el control de estados.
-* **Excepciones Personalizadas:** Control de reglas de negocio con `BateriaInsuficienteException` y `VehiculoNoDisponibleException`.
-* **Interfaz de Consola:** Menú interactivo estructurado con `do-while`, `switch` y refresco visual usando `Console.Clear()`.
-
-## 📚 Objetivo de Aprendizaje
-Este mini-proyecto me sirvió para poner en práctica conceptos fundamentales de POO y C#, buscando aplicar buenas prácticas de organización de código mediante carpetas (`Common`, `Exceptions`, `Interfaces`, `Models`, `Services`).
+El foco del desarrollo estuvo puesto en el diseño de un modelo de dominio sólido, con responsabilidades bien delimitadas, manejo de reglas de negocio y excepciones personalizadas. Como complemento visual, se integró la librería **Spectre.Console** para ofrecer una interfaz interactiva de usuario en la terminal.
 
 ---
 
-## 📐 Diagrama de Clases (ASCII)
+## 💡 Conceptos de POO Aplicados
 
-```text
-                  +-----------------------+       +-----------------------+
-                  |     <<Interface>>     |       |     <<Interface>>     |
-                  |      IDisponible      |       |      IRecargable      |
-                  +-----------------------+       +-----------------------+
-                  | + Estado              |       | + NivelBateria        |
-                  | + EstaDisponible()    |       | + CargarBateria()     |
-                  +-----------------------+       +-----------------------+
-                              ^                               ^
-                              | (Implementa)                  | (Implementa)
-                              |                               |
-        +-------------------------------------------+         |
-        |               <<Abstract>>                |         |
-        |                 Vehiculo                  |         |
-        +-------------------------------------------+         |
-        | + Id: string                              |         |
-        | + Marca: string                           |         |
-        | + Modelo: string                          |         |
-        | + Estado: EstadoVehiculo                  |         |
-        +-------------------------------------------+         |
-        | + EstaDisponible(): bool                  |         |
-        | + CalcularCostoViaje(min): double [Abstr] |         |
-        | + CambiarEstado(nuevoEstado): void        |         |
-        +-------------------------------------------+         |
-                              ^                               |
-                              | (Hereda)                      |
-            +-----------------+-----------------+             |
-            |                                   |             |
-+-----------------------+           +-----------------------+-+
-|       Bicicleta       |           |   MonopatinElectrico  |
-+-----------------------+           +-----------------------+
-| + EnTaller: bool      |           | + NivelBateria: int   |
-| + CostoBase: double   |           | + CostoPorMinuto: dbl |
-| + CostoMinuto: double |           +-----------------------+
-+-----------------------+           | + CargarBateria()     |
-| + CalcularCostoViaje()|           | + CalcularCostoViaje()|
-+-----------------------+           +-----------------------+
+En la arquitectura del sistema se implementaron los pilares y buenas prácticas de POO:
 
-                     --- EXCEPCIONES Y SERVICIOS ---
+- **Abstracción y Herencia:** Clase base abstracta `Transporte` que define la estructura común de los vehículos de la flota, heredada por tipos específicos (`BicicletaNormal`, `MonopatinElectrico`, `CamionLogistica`).
+- **Polimorfismo:** Implementación de comportamientos particulares en cada clase derivada para evaluar la aptitud de uso (`EsAptoParaUso()`) y el formateo de datos (`ToString()`).
+- **Interfaces y Segregación:** Uso de interfaces específicas (`IAlquilable`, `IRecargable`, `IDisponible`) para definir contratos claros y evitar acoplamiento innecesario.
+- **Encapsulamiento:** Validación estricta del estado interno de los objetos mediante propiedades (por ejemplo, rangos de nivel de batería o normalización de identificadores).
+- **Manejo de Excepciones de Negocio:** Creación de excepciones personalizadas (`BateriaInsuficienteException`, `VehiculoNoAptoException`) para gestionar flujos alternativos y reglas de negocio.
+- **Servicios de Aplicación:** Separación de la lógica operacional (alquileres y costos) en clases de servicio dedicadas (`ProcesarAlquiler`).
 
-    +--------------------------------+     +--------------------------------+      
-    |  BateriaInsuficienteException  |     |  VehiculoNoDisponibleException |
-    +--------------------------------+     +--------------------------------+
-    | + NivelActual: int             |     | (Hereda de Exception)          |
-    | + NivelMinimoRequerido: int    |     | Lanza error si Estado != Dispo |
-    +--------------------------------+     +--------------------------------+
-    +-------------------------------------------------+
-    |                ProcesarAlquiler                 |
-    +-------------------------------------------------+
-    | - _disponible: IDisponible                      |
-    +-------------------------------------------------+
-    | + ProcesarAlquiler(disponible: IDisponible)     |
-    | + IniciarViaje(minutos: int): double            |
-    +-------------------------------------------------+
+---
+
+## 🛠️ Tecnologías y Herramientas
+
+- **Lenguaje:** C# / .NET 10 SDK
+- **Interfaz:** CLI con [Spectre.Console](https://spectreconsole.net/)
+- **Entorno:** Visual Studio Code en Linux Mint
+
+---
+
+## 🚀 Funcionalidades Principales
+
+1. **Gestión de la Flota:** Registro, edición, listado filtrado y eliminación de vehículos.
+2. **Operaciones de Alquiler:** Inicio y finalización de viajes calculando costos según el tipo de transporte.
+3. **Logística:** Carga y descarga de vehículos dentro de camiones de transporte respetando límites de capacidad.
+
+---
+
+## 📌 Contexto del Proyecto
+
+Este miniproyecto forma parte de mi proceso de aprendizaje en desarrollo de software, sirviendo como cierre de la etapa de POO previa a continuar con el estudio de bases de datos relacionales (SQL), Entity Framework Core y ASP.NET Core.

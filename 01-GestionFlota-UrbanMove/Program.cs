@@ -43,7 +43,8 @@ public class Program
                         "4. Finalizar viaje / calcular costo",
                         "5. Cargar vehículo en camión",
                         "6. Descargar vehículo de camión",
-                        "7. Eliminar transporte de la flota",
+                        "7. Editar transporte de la flota",
+                        "8. Eliminar transporte de la flota",
                         "0. Salir"
                     }));
 
@@ -67,7 +68,10 @@ public class Program
                 case "6. Descargar vehículo de camión":
                     FlotaConsole.DescargarCamionUI(flota);
                     break;
-                case "7. Eliminar transporte de la flota":
+                case "7. Editar transporte de la flota":
+                    FlotaConsole.EditarTransporte(flota);
+                    break;
+                case "8. Eliminar transporte de la flota":
                     FlotaConsole.EliminarTransporte(flota);
                     break;
                 case "0. Salir":

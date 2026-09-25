@@ -17,7 +17,7 @@ public abstract class Transporte : IDisponible, IComparable<Transporte>
             {
                 throw new ArgumentException("El ID no puede ser nulo o estar vacio.");
             }
-            _id = value;
+            _id = value.Replace(" ","").ToUpper();
         }
     }
     private string _marca = string.Empty;
@@ -30,7 +30,7 @@ public abstract class Transporte : IDisponible, IComparable<Transporte>
             {
                 throw new ArgumentException("La marca no puede ser nulo o estar vacio.");
             }
-            _marca = value;
+            _marca = value.Trim().ToUpper();
         }
     }
     private string _modelo = string.Empty;
@@ -43,7 +43,7 @@ public abstract class Transporte : IDisponible, IComparable<Transporte>
             {
                 throw new ArgumentException("El modelo no puede ser nulo o estar vacio.");
             }
-            _modelo = value;
+            _modelo = value.Trim().ToUpper();
         }
     }
     public EstadoVehiculo Estado { get; set; }

@@ -41,6 +41,6 @@ public class CamionLogistica : Transporte
     }
     public override string ToString()
     {
-        return $"{base.ToString()}\nCapacidad Maxima:{CapacidadMaxima}\nCarga actual:{CargaCamion}";
+        return $"{base.ToString()}\nCapacidad Maxima: {CapacidadMaxima} Vehiculos";
     }
 }
