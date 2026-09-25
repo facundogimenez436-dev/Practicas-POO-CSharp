@@ -30,6 +30,7 @@ public class CamionLogistica : Transporte
             throw new InvalidOperationException("No se pude cargar un camion dentro de otro camion.");
         }
         CargaCamion.Add(carga);
+        carga.Estado = EstadoVehiculo.EnMantenimiento;
     }
     public bool DescargarCamion(Transporte carga)
     {
@@ -37,7 +38,9 @@ public class CamionLogistica : Transporte
         {
             throw new ArgumentNullException(nameof(carga), "El vehiculo a descargar no puede ser nulo.");
         }
+        carga.Estado = EstadoVehiculo.Disponible;
         return CargaCamion.Remove(carga);
+
     }
     public override string ToString()
     {

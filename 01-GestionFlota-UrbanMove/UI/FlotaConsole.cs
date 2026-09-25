@@ -463,8 +463,47 @@ public static class FlotaConsole
 
         Pausar();
     }
+    public static void RecargarBateriaUI(List<Transporte> flota)
+{
+    if (ValidarFlotaVacia(flota)) return;
 
-    // --- MÉTODOS HELPER REUTILIZABLES DE INTERFAZ ---
+    
+    var recargables = flota.OfType<IRecargable>()
+        .Cast<Transporte>()
+        .ToList();
+
+    if (!recargables.Any())
+    {
+        AnsiConsole.MarkupLine("[bold yellow]No hay vehículos eléctricos registrados en la flota.[/]");
+        Pausar();
+        return;
+    }
+
+    var opciones = recargables.Select(v => 
+        $"{v.Id.EscapeMarkup()} - {v.GetType().Name.EscapeMarkup()} (Batería actual: {((IRecargable)v).NivelBateria}%)"
+    ).ToList();
+    opciones.Add("0. Volver");
+
+    var seleccion = AnsiConsole.Prompt(
+        new SelectionPrompt<string>()
+            .Title("Seleccione el vehículo eléctrico a [bold blue]recargar[/]:")
+            .AddChoices(opciones));
+
+    if (seleccion == "0. Volver") return;
+
+    string idSeleccionado = seleccion.Split(" - ")[0];
+    var vehiculo = recargables.First(v => v.Id == idSeleccionado);
+
+    if (vehiculo is IRecargable recargable)
+    {
+        recargable.CargarBateria();
+        AnsiConsole.MarkupLine($"\n[bold green]¡Batería del vehículo {vehiculo.Id.EscapeMarkup()} cargada al 100%! Estado actualizado a Disponible.[/]");
+    }
+
+    Pausar();
+}
+
+    // --- MÉTODOS REUTILIZABLES ---
 
     private static bool ValidarFlotaVacia(List<Transporte> flota)
     {

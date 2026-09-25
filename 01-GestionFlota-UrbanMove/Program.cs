@@ -45,6 +45,7 @@ public class Program
                         "6. Descargar vehículo de camión",
                         "7. Editar transporte de la flota",
                         "8. Eliminar transporte de la flota",
+                        "9. Recargar batería de vehículo eléctrico",
                         "0. Salir"
                     }));
 
@@ -73,6 +74,9 @@ public class Program
                     break;
                 case "8. Eliminar transporte de la flota":
                     FlotaConsole.EliminarTransporte(flota);
+                    break;
+                    case "9. Recargar batería de vehículo eléctrico":
+                    FlotaConsole.RecargarBateriaUI(flota);
                     break;
                 case "0. Salir":
                     salir = true;

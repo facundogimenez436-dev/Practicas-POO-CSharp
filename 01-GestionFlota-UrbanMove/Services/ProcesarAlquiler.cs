@@ -45,10 +45,29 @@ public class ProcesarAlquiler
 
         decimal costoTotal = alquilable.CalcularCosto(minutos);
 
-        vehiculo.Estado = EstadoVehiculo.Disponible;
+        if (vehiculo is IRecargable recargable)
+    {
+        // Restamos 1% por cada minuto (ajustando para que no baje de 0)
+        int nuevoNivel = Math.Max(0, recargable.NivelBateria - minutos);
+        recargable.NivelBateria = nuevoNivel;
 
-        return costoTotal;
+        // Si la batería bajó del 15%, pasa a mantenimiento
+        if (nuevoNivel <= 15)
+        {
+            vehiculo.Estado = EstadoVehiculo.EnMantenimiento;
+        }
+        else
+        {
+            vehiculo.Estado = EstadoVehiculo.Disponible;
+        }
     }
+    else
+    {
+        vehiculo.Estado = EstadoVehiculo.Disponible;
+    }
+
+    return costoTotal;
+}
 }
 
 
