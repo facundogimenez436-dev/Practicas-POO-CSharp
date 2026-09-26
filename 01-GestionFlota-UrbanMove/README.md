@@ -23,7 +23,7 @@ En la arquitectura del sistema se implementaron los pilares y buenas prácticas 
 
 - **Lenguaje:** C# / .NET 10 SDK
 - **Interfaz:** CLI con [Spectre.Console](https://spectreconsole.net/)
-- **Entorno:** Visual Studio Code en Linux Mint
+
 
 ---
 
